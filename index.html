@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <title>Список</title>
+    <style>
+      ol {
+        list-style-type: none; /* Убираем исходные маркеры */
+        counter-reset: my-counter; /* Задаём имя счетчика */
+      }
+      li::before {
+        content: counter(my-counter); /* Выводим число */
+        counter-increment: my-counter; /* Увеличиваем значение счётчика */
+        color: white;
+      }
+      .wrapper {
+        max-width: 1200px;
+        max-height: 1000px;
+        width: 100%;
+        background: #c0dbd9;
+        margin: auto;
+        font-family: "Roboto", sans-serif;
+      }
+      header,
+      footer {
+        display: flex;
+        align-items: center;
+        max-width: 1170px;
+        height: 100px;
+        background: #7faff7;
+        margin: 0 15px 15px;
+      }
+      a {
+        text-decoration: none;
+        color: #ffffff;
+        font-size: 20px;
+        line-height: 23px;
+        background: #a5c7f9;
+        border-radius: 5px;
+        padding: 8px 15px;
+        border: none;
+        cursor: pointer;
+      }
+      .openbtn {
+        margin: 30px;
+      }
+      ol {
+        max-width: 1170px;
+        height: 411px;
+        display: grid;
+        grid-template-columns: calc(390 * 100% / 1170) calc(590 * 100% / 1170) calc(
+            160 * 100% / 1170
+          );
+        gap: calc(15 * 100vw / 1170);
+        list-style: none;
+        padding: 0;
+        background: #b3f95a;
+        margin: 15px;
+      }
+      @media screen and (min-width: 1170px) {
+        ol {
+          gap: 15px;
+        }
+      }
+      li {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 30px;
+        background: #8ad191;
+      }
+      .item1 {
+        grid-column: 1 / span 1;
+        grid-row: 1;
+      }
+      .item2 {
+        grid-column: 2 / span 1;
+        grid-row: 1;
+      }
+      .item3 {
+        grid-column: 3 / span 1;
+        grid-row: 1;
+      }
+      .item4 {
+        grid-column: 1 / span 2;
+        grid-row: 2;
+      }
+      .item5 {
+        grid-column: 3 / span 1;
+        grid-row: 2;
+      }
+      .block2 {
+        display: flex;
+        align-items: center;
+        max-width: 1170px;
+        background: #88b5bf;
+        margin: 0 15px 100px;
+        padding: calc(15 * 100% / 1170);
+      }
+      .block2 > div {
+        width: 255px;
+        margin: calc(15 * 100% / 1170);
+      }
+      .block2 > div > div {
+        position: relative;
+        width: 100%;
+        padding-bottom: 78%;
+        background: #0d89b0;
+      }
+      .block2 > div > div > div {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+      }
+
+      /* Modal */
+      /* Add animation (Chrome, Safari, Opera) */
+      @-webkit-keyframes example {
+        from {
+          top: -100px;
+          opacity: 0;
+        }
+        to {
+          top: 0px;
+          opacity: 1;
+        }
+      }
+      /* Add animation (Standard syntax) */
+      @keyframes example {
+        from {
+          top: -100px;
+          opacity: 0;
+        }
+        to {
+          top: 0px;
+          opacity: 1;
+        }
+      }
+
+      .modal {
+        display: none;
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0, 0, 0);
+        background-color: rgba(0, 0, 0, 0.3);
+      }
+
+      .modal:target {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .modal-content {
+        background-color: #f3f3f3;
+        position: relative;
+        border: 1px #777 solid;
+        width: 400px;
+        height: 400px;
+        max-width: 80%;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+          0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+        /* Add animation */
+        -webkit-animation-name: example; /* Chrome, Safari, Opera */
+        -webkit-animation-duration: 0.5s; /* Chrome, Safari, Opera */
+        animation-name: example;
+        animation-duration: 0.5s;
+      }
+
+      .closebtn {
+        position: absolute;
+        top: 0;
+        right: 0;
+        text-decoration: none;
+        margin: 15px;
+      }
+      a.close {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        opacity: 0;
+      }
+      .closebtn:hover,
+      .closebtn:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      .container {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 53px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <a href="#id01" class="openbtn">Open pop-up button</a>
+      </header>
+      <ol class="block1">
+        <li class="item1"></li>
+        <li class="item2"></li>
+        <li class="item3"></li>
+        <li class="item4"></li>
+        <li class="item5"></li>
+      </ol>
+      <div class="block2">
+        <div class="">
+          <div class="">
+            <div class=""></div>
+          </div>
+        </div>
+        <div class="">
+          <div class="">
+            <div class=""></div>
+          </div>
+        </div>
+        <div class="">
+          <div class="">
+            <div class=""></div>
+          </div>
+        </div>
+        <div class="">
+          <div class="">
+            <div class=""></div>
+          </div>
+        </div>
+      </div>
+      <footer></footer>
+
+      <div id="id01" class="modal">
+        <a href="#" class="close"></a>
+        <div class="modal-content">
+          <a href="#" class="closebtn">×</a>
+
+          <div class="container">Pop-up</div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
